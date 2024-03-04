@@ -42,7 +42,7 @@ def screen_cv(data: CVData):
   
   return result
 
-# Research endpoint
+# Research endpoint -> Never mind this endpoint is just for testing---------
 @app.get("/write/{topic}")
 def task_agent(topic: str):
   # print(topic)

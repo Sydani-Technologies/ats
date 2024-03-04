@@ -8,7 +8,7 @@ Clone the repo and cd into the project folder
 
 1. Create python virtual environment `python -m venv .venv` and activate it using `.venv/Scripts/Activate`
 
-2. Install the dependencies cd into the backend folder and run `pip install -r requirements.txt`
+2. Install the dependencies run: `pip install -r requirements.txt`
 
 3. Rename `.env-example` file to `.env` and edit the file to add your `OPENAI_API_KEY=`
 

@@ -1,23 +1,23 @@
 from crewai import Task
 from textwrap import dedent
 
-class ApplicationTrackingTasks():
-  def __init__(self):
-    pass
+# class ApplicationTrackingTasks():
+#   def __init__(self):
+#     pass
 
-  def screen(self, agent, cv_content, criteria):
-    return Task(
-      description=dedent(f""" 
-        Screen the content of this applicant's CV: {cv_content} 
-        Determine if they meet this requirements: {criteria} 
-        Return a python dict with the following structure: 
-        "name": "applicant_name", "email": "applicant_email", "status": "qualified" or "unqualified". 
-        
-        Only assign the status "qualified" if the applicant's CV meets the requirements; otherwise, assign "unqualified".
-        Return only the python dict not str
-      """),
-      agent=agent,
-    )
+def cv_screen(agent, cv_content, criteria):
+  return Task(
+    description=dedent(f""" 
+      Screen the content of this applicant's CV: {cv_content} 
+      Determine if they meet this requirements: {criteria} 
+      Return a python dict with the following structure: 
+      "name": "applicant_name", "email": "applicant_email", "status": "qualified" or "unqualified". 
+      
+      Only assign the status "qualified" if the applicant's CV meets the requirements; otherwise, assign "unqualified".
+      Return only the python dict not str
+    """),
+    agent=agent,
+  )
   
 # research tasks
 # class ResearchTasks:

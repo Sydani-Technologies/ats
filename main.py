@@ -2,9 +2,9 @@ from typing import Union
 from fastapi import APIRouter, FastAPI
 from pydantic import BaseModel
 from crewai import Crew, Process
-from agents import ApplicationTrackingAgents
-from tasks import ApplicationTrackingTasks
-from tools import ApplicationTrackingTools
+from agents import application_screening_expert
+from tasks import cv_screen
+from tools import cv_loader
 
 prefix_router = APIRouter(prefix="/ai/api")
 
@@ -24,29 +24,28 @@ def index():
 def screen_cv(data: CVData):
   cv_url = data.cv_url
   criteria = data.criteria
-  return data
+  
   # agents = ApplicationTrackingAgents()
   # tasks = ApplicationTrackingTasks()
-  # tools = ApplicationTrackingTools()
 
-  # cv_content = tools.cv_loader(file_url=cv_url)
-  # screening_agent = agents.application_screening_expert()
+  cv_content = cv_loader(file_url=cv_url)
+  screening_agent = application_screening_expert()
 
-  # screening_task = tasks.screen(
-  #    agent=screening_agent, 
-  #    cv_content=cv_content, 
-  #    criteria=criteria
-  # )
+  screening_task = cv_screen(
+     agent=screening_agent, 
+     cv_content=cv_content, 
+     criteria=criteria
+  )
 
-  # crew = Crew(
-  #   agents=[screening_agent],
-  #   tasks=[screening_task],
-  #   process=Process.sequential  # Optional: Sequential task execution is default
-  # )
+  crew = Crew(
+    agents=[screening_agent],
+    tasks=[screening_task],
+    process=Process.sequential  # Optional: Sequential task execution is default
+  )
 
-  # result = crew.kickoff()
+  result = crew.kickoff()
   
-  # return result
+  return result
 
 # Research endpoint -> Never mind this endpoint is just for testing---------
 @prefix_router.get("/write/{topic}")

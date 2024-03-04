@@ -14,22 +14,23 @@ google_api_key = os.environ.get('GOOGLE_API_KEY')
 # GoogleGemini = GoogleGenerativeAI(model="gemini-pro", google_api_key=google_api_key)
 OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 
-class ApplicationTrackingAgents:
-  def __init__(self):
-    self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-    # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
-    # self.Ollama = Ollama(model="openhermes")
+# class ApplicationTrackingAgents:
+#   def __init__(self):
+#     self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+#     # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
+#     # self.Ollama = Ollama(model="openhermes")
 
-  def application_screening_expert(self):
-    return Agent(
-      role='Application Screening Expert',
-      goal="Efficiently screen job applicants' CVs",
-      verbose=True,
-      memory=True,
-      backstory="""Armed with expertise in candidate evaluation, you meticulously assess job applicants' CVs, ensuring only the most qualified individuals proceed in the hiring process.""",
-      allow_delegation=True,
-      llm=self.OpenAIGPT35
-    )
+#   def application_screening_expert(self, tools):
+#     return Agent(
+#       role='Application Screening Expert',
+#       goal="Efficiently screen job applicants' CVs",
+#       verbose=True,
+#       memory=True,
+#       backstory="""Armed with expertise in candidate evaluation, you meticulously assess job applicants' CVs, ensuring only the most qualified individuals proceed in the hiring process.""",
+#       tools=tools,
+#       allow_delegation=True,
+#       llm=self.OpenAIGPT35
+#     )
   
 # class ResearchAgents:
 #   def __init__(self, topic, tools):
@@ -38,7 +39,17 @@ class ApplicationTrackingAgents:
 #     self.tools = tools
 
 #   # Creating a senior researcher agent with memory and verbose mode
-  
+
+def application_screening_expert():
+  return Agent(
+    role='Application Screening Expert',
+    goal="Efficiently screen job applicants' CVs",
+    verbose=True,
+    memory=True,
+    backstory="""Armed with expertise in candidate evaluation, you meticulously assess job applicants' CVs, ensuring only the most qualified individuals proceed in the hiring process.""",
+    allow_delegation=True,
+    llm=OpenAIGPT35
+  )
 
 def researcher(topic, tools):
   

@@ -1,10 +1,12 @@
 from typing import Union
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from pydantic import BaseModel
 from crewai import Crew, Process
 from agents import ApplicationTrackingAgents
 from tasks import ApplicationTrackingTasks
 from tools import ApplicationTrackingTools
+
+prefix_router = APIRouter(prefix="/ai/api")
 
 
 app = FastAPI()
@@ -14,11 +16,11 @@ class CVData(BaseModel):
     cv_url: str
     criteria: str 
 
-@app.get('/')
+@prefix_router.get("/")
 def index():
    return {"code": 200, "status": "Ok"}
 
-@app.post("/screen")
+@prefix_router.post("/screen")
 def screen_cv(data: CVData):
   cv_url = data.cv_url
   criteria = data.criteria
@@ -47,7 +49,7 @@ def screen_cv(data: CVData):
   return result
 
 # Research endpoint -> Never mind this endpoint is just for testing---------
-@app.get("/write/{topic}")
+@prefix_router.get("/write/{topic}")
 def task_agent(topic: str):
   # print(topic)
   from langchain_community.tools import DuckDuckGoSearchRun
@@ -73,3 +75,5 @@ def task_agent(topic: str):
 
   result = crew.kickoff()
   return result
+
+app.include_router(prefix_router)

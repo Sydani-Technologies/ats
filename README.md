@@ -12,6 +12,6 @@ Clone the repo and cd into the project folder
 
 3. Run: `uvicorn main:app --reload` this will run the app on localhost port 8000
 
-4. Use Postman or any other API testing platform send a post request with raw data
+4. Use Postman or any other API testing platform send a post request with raw data to
   url: `http://127.0.0.1:8000/screen` raw-data: `{"cv_url": "CV URL From ERP", "criteria": "Job requirement from ERP"}`
   

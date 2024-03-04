@@ -24,29 +24,29 @@ def index():
 def screen_cv(data: CVData):
   cv_url = data.cv_url
   criteria = data.criteria
+  return data
+  # agents = ApplicationTrackingAgents()
+  # tasks = ApplicationTrackingTasks()
+  # tools = ApplicationTrackingTools()
+
+  # cv_content = tools.cv_loader(file_url=cv_url)
+  # screening_agent = agents.application_screening_expert()
+
+  # screening_task = tasks.screen(
+  #    agent=screening_agent, 
+  #    cv_content=cv_content, 
+  #    criteria=criteria
+  # )
+
+  # crew = Crew(
+  #   agents=[screening_agent],
+  #   tasks=[screening_task],
+  #   process=Process.sequential  # Optional: Sequential task execution is default
+  # )
+
+  # result = crew.kickoff()
   
-  agents = ApplicationTrackingAgents()
-  tasks = ApplicationTrackingTasks()
-  tools = ApplicationTrackingTools()
-
-  cv_content = tools.cv_loader(file_url=cv_url)
-  screening_agent = agents.application_screening_expert()
-
-  screening_task = tasks.screen(
-     agent=screening_agent, 
-     cv_content=cv_content, 
-     criteria=criteria
-  )
-
-  crew = Crew(
-    agents=[screening_agent],
-    tasks=[screening_task],
-    process=Process.sequential  # Optional: Sequential task execution is default
-  )
-
-  result = crew.kickoff()
-  
-  return result
+  # return result
 
 # Research endpoint -> Never mind this endpoint is just for testing---------
 @prefix_router.get("/write/{topic}")

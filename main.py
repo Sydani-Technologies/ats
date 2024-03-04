@@ -14,7 +14,7 @@ class CVData(BaseModel):
     cv_url: str
     criteria: str 
 
-@app.get('/')
+@app.get('/ai/api')
 def index():
    return {"code": 200, "status": "Ok"}
 

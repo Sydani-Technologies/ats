@@ -16,6 +16,7 @@ def cv_screen(agent, cv_content, criteria):
       Only assign the status "qualified" if the applicant's CV meets the requirements; otherwise, assign "unqualified".
       Return only the python dict not str
     """),
+    expected_output="A python dict with name, email, and status",
     agent=agent,
   )
   

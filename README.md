@@ -10,7 +10,7 @@ Clone the repo and cd into the project folder
 
 2. Install the dependencies run: `pip install -r requirements.txt`
 
-3. Rename `.env-example` file to `.env` and edit the file to add your `OPENAI_API_KEY=`
+3. Rename `.env-example` file to `.env` and edit the file to add your `OPENAI_API_KEY` put any string on `GOOGLE_API_KEY` if you are not testing with google gemini
 
 4. Run: `uvicorn main:app --reload` this will run the app on localhost port 8000
 

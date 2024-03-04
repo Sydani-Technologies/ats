@@ -11,7 +11,7 @@ load_dotenv()
 
 google_api_key = os.environ.get('GOOGLE_API_KEY')
 
-GoogleGemini = GoogleGenerativeAI(model="gemini-pro", google_api_key=google_api_key)
+# GoogleGemini = GoogleGenerativeAI(model="gemini-pro", google_api_key=google_api_key)
 OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 
 class ApplicationTrackingAgents:
@@ -52,7 +52,7 @@ def researcher(topic, tools):
     the world.""",
     tools=tools,
     allow_delegation=True,
-    llm=GoogleGemini
+    llm=OpenAIGPT35
   )
 
 # Creating a writer agent with custom tools and delegation capability
@@ -68,5 +68,5 @@ def writer(topic, tools):
     discoveries to light in an accessible manner.""",
     tools=tools,
     allow_delegation=False,
-    llm=GoogleGemini
+    llm=OpenAIGPT35
   )

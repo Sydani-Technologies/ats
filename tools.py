@@ -68,3 +68,14 @@ class ResearchTools:
         st = DuckDuckGoSearchRun()
         return st
     
+# multi parm tool e.g
+
+# from pydantic import BaseModel, Field
+
+# class CalculationInput(BaseModel):
+#     operation: str
+#     factor: float
+
+# @tool("perform_calculation", args_schema=CalculationInput, return_direct=True)
+# def perform_calculation(operation: str, factor: float):
+#     result = eval(operation) * factor

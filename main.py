@@ -44,8 +44,8 @@ def screen_cv(data: CVData):
   )
 
   result = crew.kickoff()
-  return data
-  # return result
+ 
+  return result
 
 # Research endpoint -> Never mind this endpoint is just for testing---------
 @prefix_router.get("/write/{topic}")

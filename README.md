@@ -2,7 +2,7 @@
 
 ## Setup
 
-Clone the repo and cd into the project folder
+Clone the repo and cd into the project folder - make sure your python version is >= 3.10
 
 ### Follow the instruction
 

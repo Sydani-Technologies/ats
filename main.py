@@ -14,6 +14,10 @@ class CVData(BaseModel):
     cv_url: str
     criteria: str 
 
+@app.get('/')
+def index():
+   return {"code": 200, "status": "Ok"}
+
 @app.post("/screen")
 def screen_cv(data: CVData):
   cv_url = data.cv_url

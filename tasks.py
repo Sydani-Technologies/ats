@@ -8,18 +8,46 @@ from textwrap import dedent
 def cv_screen(agent, cv_content, criteria):
   return Task(
     description=dedent(f""" 
-      Screen the content of this applicant's CV: {cv_content} 
-      Determine if they meet this requirements: {criteria} 
-      Return a python dict with the following structure: 
-      "name": "applicant_name", "email": "applicant_email", "status": "qualified" or "unqualified". 
-      
-      Only assign the status "qualified" if the applicant's CV meets the requirements; otherwise, assign "unqualified".
-      Return only the python dict not str
+      Task: Analyze an applicant's CV to determine if they meet specified requirements for a position.
+                       
+      Inputs:
+
+      - cv_content: {cv_content}.
+      - criteria: {criteria}.
+
+      Outputs:
+
+      Return a Python dictionary:
+
+      - name: Applicant's name (from CV).
+      - email: Applicant's email (from CV).
+      - status: Indicates if applicant is "qualified" or "unqualified":
+          - "qualified": If CV meets all requirements.
+          - "unqualified": If CV does not meet all requirements. 
+      - reason: Detailed explanation for assessment.
+
+      Important Notes:
+
+      - Function should not return a string. 
+      - Only assign "qualified" status if all requirements are met.
+      - Provide detailed reason for qualification or disqualification in `reason`.
+
     """),
     expected_output="A python dict with name, email, and status",
     agent=agent,
   )
-  
+
+# Task(
+#     description=dedent(f""" 
+#       Screen the content of this applicant's CV: {cv_content} 
+#       Determine if they meet this requirements: {criteria} 
+#       Return a python dict with the following structure: 
+#       "name": "applicant_name", "email": "applicant_email", "status": "qualified" or "unqualified: reason: detailed reason for qualifying or disqualifying the candidate". 
+#       Only assign the status "qualified" if the applicant's CV meets the requirements; otherwise, assign "unqualified".
+#       Return only the python dict not str
+#     """),
+
+
 # research tasks
 # class ResearchTasks:
 #   def __init__(self, topic, tools, researcher, writer):
